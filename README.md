@@ -16,17 +16,18 @@ Spin Finance Dashboard uses:
 
 Spin Finance Dashboard exposes API endpoints that anyone can use to obtain key metrics and data:
 
-`/api/orders`
+[`/api/orders`](https://spin-finance-dashboard.vercel.app/api/orders?lastHours=24&groupBy=hour)
 
-`/api/orderCount`
+[`/api/orderCount`](https://spin-finance-dashboard.vercel.app/api/orderCount?lastHours=24&groupBy=hour)
 
-`/api/userCount`
+[`/api/userCount`](https://spin-finance-dashboard.vercel.app/api/userCount?lastHours=24&groupBy=hour)
 
-`/volume`
+[`/volume`](https://spin-finance-dashboard.vercel.app/api/volume?lastHours=24&groupBy=hour)
 
-All endpoints require the `?lastHours` parameter.
-Additionally, you may specify a `groupBy` value (e.g. `groupBy=hour` or `groupBy=day`).
-For `/volume` endpoint, you can specify an optional `marketId` parameter
+- All endpoints require the `?lastHours` url parameter.
+- Additionally, you may specify a `groupBy` parameter (e.g. `groupBy=hour` or `groupBy=day`).
+- For `/volume` endpoint, you can specify an optional `marketId` parameter which will filter for a specifc market (e.g. `marketId=1` filters for NEAR/USDC only)
+- For `/volume` endpoint, omitting `marketId` returns data categorized for each market pair. Alternatively, `marketId=all` returns data summed and aggregated over all markets.
 
 ## Project Sustainability
 
