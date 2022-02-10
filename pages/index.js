@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Head from "next/head";
 
 import HeaderBar from "@/components/HeaderBar";
 import GraphTile from "@/components/GraphTile";
@@ -26,6 +27,9 @@ export default function Home(props) {
   console.log(props.eachMarketVolume);
   return (
     <>
+      <Head>
+        <title>{config["title"]}</title>
+      </Head>
       <HeaderBar />
       <Grid narrow>
         <Row>
@@ -158,6 +162,7 @@ export default function Home(props) {
           <Column sm={12} md={12} lg={12}>
             <GraphTile>
               <Dropdown
+                id="default"
                 titleText="Volume by market"
                 selectedItem={currentItem}
                 onChange={({ selectedItem }) => setCurrentItem(selectedItem)}

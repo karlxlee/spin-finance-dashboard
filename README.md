@@ -1,8 +1,8 @@
 # Spin Finance Dashboard
 
-### Live Demo:
+### Live Demo: https://spin-finance-dashboard.vercel.app/
 
-Spin Finance's spot markets are live on NEAR testnet, but there are no dedicated analytics to track its usage. Investors, and other stakeholders want to explore Spin's key metrics. Spin Finance Dashboard draws back the curtain and brings those metrics to the forefront.
+Spin Finance's spot markets are live on NEAR testnet, but there are no dedicated analytics to track its usage. Traders, investors and other stakeholders want to monitor Spin's key metrics. Spin Finance Dashboard draws back the curtain and brings those metrics to the forefront.
 
 ## Technologies
 
@@ -14,7 +14,9 @@ Spin Finance Dashboard uses:
 
 ## Project Sustainability
 
-As Spin Finance adds new markets and deploys to mainnet, Spin Finance Dashboard must be able to adapt.
+As Spin Finance adds new markets and deploys to mainnet, Spin Finance Dashboard must be able to adapt with ease.
+
+Adding a new market is simple; append the market id and market pair name in `config.json` in the root of the project.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

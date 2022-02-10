@@ -1,17 +1,6 @@
 import toNanoTimestamps from "@/utils/toNanoTimestamps";
 import { indexer, QueryTypes } from "@/utils/indexer";
-
-// async function logToVolume(log) {
-//   const tokens = ["spfi_skyward.testnet", "spfi_paras.testnet", "near.near"];
-//   // const tokens = ["spfi_paras.testnet"];
-//   if (tokens.some((token) => log.includes(token))) {
-//     let token = tokens.filter((token) => log.includes(token))[0];
-//     console.log(log);
-//     console.log(token);
-//     let volume = parseInt(log.split("(")[0].match(/\d+/g)) || 0;
-//     return { token, volume };
-//   }
-// }
+import config from "../../config.json";
 
 // Accepts UNIX timestamps
 export async function volume({
@@ -26,6 +15,7 @@ export async function volume({
       startTimestamp,
       endTimestamp,
       lastHours,
+      spinAccount: config["account"],
     });
 
     const selectVolume = `
@@ -45,7 +35,7 @@ export async function volume({
     const baseQuery = `
           FROM public.receipts JOIN public.action_receipt_actions
           ON public.action_receipt_actions.receipt_id = public.receipts.receipt_id
-          WHERE receiver_account_id = 'app_2.spin_swap.testnet'
+          WHERE receiver_account_id = :spinAccount
           AND included_in_block_timestamp >= :startNanoTimestamp
           AND included_in_block_timestamp <= :endNanoTimestamp
           AND args->>'method_name' = ANY(ARRAY ['ask', 'bid'])
@@ -107,58 +97,10 @@ export async function volume({
         endNanoTimestamp,
         groupBy,
         marketId,
+        spinAccount: config["account"],
       },
     });
     marketId && console.log(receipts);
-    // let volume = {};
-    // let dateVolume = {};
-    // for (let receipt of receipts) {
-    //   const outcomes = await txResult(
-    //     receipt.originated_from_transaction_hash,
-    //     receipt.predecessor_account_id
-    //   ).then((r) => r.result.receipts_outcome);
-
-    //   for (let outcome of outcomes) {
-    //     let logs = outcome.outcome.logs;
-    //     if (logs.length >= 3) {
-    //       for (let log of logs) {
-    //         const checkVolume = await logToVolume(log);
-    //         if (checkVolume) {
-    //           if (groupBy) {
-    //             !(checkVolume.token in dateVolume) &&
-    //               (dateVolume[checkVolume.token] = {});
-    //             if (receipt.date in dateVolume[checkVolume.token]) {
-    //               dateVolume[checkVolume.token][receipt.date] +=
-    //                 checkVolume.volume;
-    //             } else {
-    //               dateVolume[checkVolume.token][receipt.date] =
-    //                 0 + checkVolume.volume;
-    //             }
-    //           } else {
-    //             checkVolume.token in volume
-    //               ? (volume[checkVolume.token] += checkVolume.volume)
-    //               : (volume[checkVolume.token] = 0 + checkVolume.volume);
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
-
-    // let dateVolumeArray = Object.keys(dateVolume)
-    //   .map((token) =>
-    //     Object.keys(dateVolume[token]).map((date) => {
-    //       return {
-    //         token,
-    //         date,
-    //         volume: dateVolume[token][date],
-    //       };
-    //     })
-    //   )
-    //   .flat();
-
-    // console.log(dateVolume);
-    // console.log(volume);
 
     return receipts;
   } catch (error) {
@@ -166,24 +108,12 @@ export async function volume({
   }
 }
 
-// /** @type {import('@sveltejs/kit').RequestHandler} */
-// export async function get({ url }) {
-//   const data = await volume(
-//     [...url.searchParams].reduce(
-//       (object, [key, value]) => ((object[key] = value), object),
-//       {}
-//     )
-//   );
-
-//   if (data) {
-//     return {
-//       body: {
-//         data,
-//       },
-//     };
-//   }
-
-//   return {
-//     status: 404,
-//   };
-// }
+export default async function handler(req, res) {
+  const { query } = req;
+  try {
+    const result = await volume({ ...query });
+    res.status(200).json({ result });
+  } catch (err) {
+    res.status(500).json({ error: "failed to load data" });
+  }
+}

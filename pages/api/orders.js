@@ -1,5 +1,6 @@
 import toNanoTimestamps from "@/utils/toNanoTimestamps";
 import { indexer, QueryTypes } from "@/utils/indexer";
+import config from "../../config.json";
 
 // Accepts UNIX timestamps
 export async function orders({ startTimestamp, endTimestamp, lastHours }) {
@@ -19,7 +20,7 @@ export async function orders({ startTimestamp, endTimestamp, lastHours }) {
       `
         SELECT * FROM public.receipts JOIN public.action_receipt_actions
         ON public.action_receipt_actions.receipt_id = public.receipts.receipt_id
-        WHERE receiver_account_id = 'app_2.spin_swap.testnet'
+        WHERE receiver_account_id = :spinAccount
         AND included_in_block_timestamp >= :startTimestampNano
         AND included_in_block_timestamp <= :endTimestampNano
         AND args->'method_name' IS NOT NULL
@@ -30,6 +31,7 @@ export async function orders({ startTimestamp, endTimestamp, lastHours }) {
         replacements: {
           startTimestampNano,
           endTimestampNano,
+          spinAccount: config["account"],
         },
       }
     );
@@ -45,24 +47,12 @@ export async function orders({ startTimestamp, endTimestamp, lastHours }) {
   }
 }
 
-// /** @type {import('@sveltejs/kit').RequestHandler} */
-// export async function get({ url }) {
-//   const data = await orders(
-//     [...url.searchParams].reduce(
-//       (object, [key, value]) => ((object[key] = value), object),
-//       {}
-//     )
-//   );
-
-//   if (data) {
-//     return {
-//       body: {
-//         data,
-//       },
-//     };
-//   }
-
-//   return {
-//     status: 404,
-//   };
-// }
+export default async function handler(req, res) {
+  const { query } = req;
+  try {
+    const result = await orders({ ...query });
+    res.status(200).json({ result });
+  } catch (err) {
+    res.status(500).json({ error: "failed to load data" });
+  }
+}

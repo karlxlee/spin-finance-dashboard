@@ -1,4 +1,6 @@
 {
+  "title": "Spin Finance Dashboard",
+  "account": "app_2.spin_swap.testnet",
   "timeframes": {
     "24": "Past 24 hours",
     "48": "Past 48 hours",

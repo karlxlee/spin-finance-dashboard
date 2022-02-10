@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Head from "next/head";
 
 import HeaderBar from "@/components/HeaderBar";
 import GraphTile from "@/components/GraphTile";
@@ -23,9 +24,11 @@ export default function Timeframe(props) {
   }));
   const [currentItem, setCurrentItem] = useState(marketItems[0]);
 
-  console.log(props.eachMarketVolume);
   return (
     <>
+      <Head>
+        <title>{config["title"] + " - past " + props.hours + " hours"}</title>
+      </Head>
       <HeaderBar />
       <Grid narrow>
         <Row>
@@ -158,6 +161,7 @@ export default function Timeframe(props) {
           <Column sm={12} md={12} lg={12}>
             <GraphTile>
               <Dropdown
+                id="default"
                 titleText="Volume by market"
                 selectedItem={currentItem}
                 onChange={({ selectedItem }) => setCurrentItem(selectedItem)}
@@ -241,6 +245,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
+      hours: params.timeframe,
       volume: stringifyDates(volumeRes),
       volumeTotal: volumeTotalRes,
       userCount: stringifyDates(userCountRes),
