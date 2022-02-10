@@ -1,0 +1,12 @@
+{
+  "timeframes": {
+    "24": "Past 24 hours",
+    "48": "Past 48 hours",
+    "96": "Past 96 hours"
+  },
+  "markets": {
+    "1": "NEAR/USDC",
+    "2": "PARAS/USDC",
+    "3": "SKYWARD/USDC"
+  }
+}

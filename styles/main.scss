@@ -1,0 +1,27 @@
+@import "carbon-components/css/carbon-components.css";
+@import "@carbon/charts/styles-g100.css";
+
+@import "@carbon/themes/scss/themes";
+
+body {
+  background-color: black;
+}
+.bx--btn--primary {
+  background-color: transparent;
+  border-color: white;
+}
+
+.bx--btn--primary:hover {
+  color: black;
+  background-color: white;
+}
+.bx--btn--primary:active {
+  color: black;
+  background-color: white;
+}
+.bx--btn--primary:focus {
+  outline: none;
+}
+
+$carbon--theme: $carbon--theme--g100;
+@include carbon--theme();

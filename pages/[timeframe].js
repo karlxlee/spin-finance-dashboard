@@ -16,7 +16,7 @@ import { userCount } from "@/api/userCount";
 
 import config from "../config.json";
 
-export default function Home(props) {
+export default function Timeframe(props) {
   const marketItems = Object.keys(config["markets"]).map((marketId) => ({
     id: marketId,
     text: config["markets"][marketId],
@@ -203,7 +203,7 @@ export default function Home(props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ params }) {
   const stringifyDates = (array) => {
     return array.map((entry) => ({
       ...entry,
@@ -211,28 +211,28 @@ export async function getStaticProps() {
     }));
   };
   const volumeRes = await volume({
-    lastHours: 24,
+    lastHours: params.timeframe,
     groupBy: "hour",
   });
   const volumeTotalRes = await volume({
-    lastHours: 24,
+    lastHours: params.timeframe,
   });
   const userCountRes = await userCount({
-    lastHours: 24,
+    lastHours: params.timeframe,
     groupBy: "hour",
   });
   const userCountTotalRes = await userCount({
-    lastHours: 24,
+    lastHours: params.timeframe,
   });
   const orderCountRes = await orderCount({
-    lastHours: 24,
+    lastHours: params.timeframe,
     groupBy: "hour",
   });
   const eachMarketVolumeRes = {};
   for (let marketId in config["markets"]) {
     eachMarketVolumeRes[marketId] = stringifyDates(
       await volume({
-        lastHours: 24,
+        lastHours: params.timeframe,
         marketId: marketId,
         groupBy: "hour",
       })
@@ -249,5 +249,19 @@ export async function getStaticProps() {
       eachMarketVolume: eachMarketVolumeRes,
     },
     revalidate: 10, // ISR
+  };
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      ...Object.keys(config["timeframes"]).map((timeframe) => ({
+        params: {
+          timeframe: timeframe,
+        },
+      })),
+    ],
+
+    fallback: "blocking", // false or 'blocking'
   };
 }

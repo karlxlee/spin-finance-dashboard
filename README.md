@@ -1,3 +1,21 @@
+# Spin Finance Dashboard
+
+### Live Demo:
+
+Spin Finance's spot markets are live on NEAR testnet, but there are no dedicated analytics to track its usage. Investors, and other stakeholders want to explore Spin's key metrics. Spin Finance Dashboard draws back the curtain and brings those metrics to the forefront.
+
+## Technologies
+
+Spin Finance Dashboard uses:
+
+- Instant server-rendered pages + clientside updates using Next.js
+- Latest blockchain data from the NEAR indexer
+- Industry-standard charts and UI via IBM's Carbon Design Framework
+
+## Project Sustainability
+
+As Spin Finance adds new markets and deploys to mainnet, Spin Finance Dashboard must be able to adapt.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
