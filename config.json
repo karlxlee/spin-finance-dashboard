@@ -1,6 +1,7 @@
 {
   "title": "Spin Finance Dashboard",
   "account": "app_2.spin_swap.testnet",
+  "indexer_uri": "postgres://public_readonly:nearprotocol@testnet.db.explorer.indexer.near.dev/testnet_explorer",
   "timeframes": {
     "24": "Past 24 hours",
     "48": "Past 48 hours",

@@ -1,10 +1,10 @@
 import { Sequelize, QueryTypes } from "sequelize";
+import config from "../config.json";
 
-const indexer = new Sequelize(
-  "postgres://public_readonly:nearprotocol@testnet.db.explorer.indexer.near.dev/testnet_explorer",
-  {
-    dialect: "postgres",
-  }
-);
-
+const indexer = new Sequelize(config["indexer_uri"], {
+  dialect: "postgres",
+});
+(async () => {
+  await indexer.authenticate();
+})();
 export { indexer, QueryTypes };
