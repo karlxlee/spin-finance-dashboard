@@ -49,7 +49,6 @@ export async function orderCount({
 }
 
 export default async function handler(req, res) {
-  await indexer.authenticate();
   const { query } = req;
   try {
     const result = await orderCount({ ...query });

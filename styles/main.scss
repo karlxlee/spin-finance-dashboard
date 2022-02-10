@@ -1,6 +1,6 @@
 @import "carbon-components/css/carbon-components.css";
-@import "@carbon/charts/styles-g100.css";
 
+@import "@carbon/charts/styles-g100.css";
 @import "@carbon/themes/scss/themes";
 
 body {
@@ -21,6 +21,10 @@ body {
 }
 .bx--btn--primary:focus {
   outline: none;
+}
+
+.bx--overflow-menu__icon {
+  fill: white;
 }
 
 $carbon--theme: $carbon--theme--g100;

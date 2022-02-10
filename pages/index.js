@@ -162,6 +162,7 @@ export default function Home(props) {
           <Column sm={12} md={12} lg={12}>
             <GraphTile>
               <Dropdown
+                style={{ marginBottom: "2rem" }}
                 id="default"
                 titleText="Volume by market"
                 selectedItem={currentItem}
@@ -197,7 +198,7 @@ export default function Home(props) {
                       enabled: true,
                     },
                   },
-                  height: "600px",
+                  height: "500px",
                 }}
               />
             </GraphTile>
