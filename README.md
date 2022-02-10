@@ -12,22 +12,30 @@ Spin Finance Dashboard uses:
 - Latest blockchain data from the NEAR indexer
 - Industry-standard charts and UI via IBM's Carbon Design Framework
 
+## Metrics
+
+- Volume of orders placed (in USDC)<sup>1</sup>
+- Volume of orders placed per market (in USDC)<sup>1</sup>
+- Number of users
+- Number of orders
+
+<sup>1</sup> Note that volume of orders placed is the sum of all ask and bid orders (both market and limit orders) placed by users in a given time period. It does not take into account the removal of orders (`drop_order`).
+
 ## Spin Finance Dashboard API
 
 Spin Finance Dashboard exposes API endpoints that anyone can use to obtain key metrics and data:
-
-[`/api/orders`](https://spin-finance-dashboard.vercel.app/api/orders?lastHours=24&groupBy=hour)
 
 [`/api/orderCount`](https://spin-finance-dashboard.vercel.app/api/orderCount?lastHours=24&groupBy=hour)
 
 [`/api/userCount`](https://spin-finance-dashboard.vercel.app/api/userCount?lastHours=24&groupBy=hour)
 
-[`/volume`](https://spin-finance-dashboard.vercel.app/api/volume?lastHours=24&groupBy=hour)
+[`/volume`](https://spin-finance-dashboard.vercel.app/api/volume?lastHours=24&groupBy=hour)<sup>1</sup>
 
 - All endpoints require the `?lastHours` url parameter.
 - Additionally, you may specify a `groupBy` parameter (e.g. `groupBy=hour` or `groupBy=day`).
 - For `/volume` endpoint, you can specify an optional `marketId` parameter which will filter for a specifc market (e.g. `marketId=1` filters for NEAR/USDC only)
-- For `/volume` endpoint, omitting `marketId` returns data categorized for each market pair. Alternatively, `marketId=all` returns data summed and aggregated over all markets.
+- For `/volume` endpoint, omitting `marketId` returns data categorized for each market pair. Alternatively, `marketId=all` returns data summed and aggregated over all markets
+  -The `/api/orders` is a data-heavy endpoint and is available for local development only
 
 ## Project Sustainability
 
