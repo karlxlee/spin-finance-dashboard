@@ -11,8 +11,12 @@ import {
 } from "carbon-components-react";
 import Link from "next/link";
 import config from "../config.json";
+import { useRouter } from "next/router";
 
 const HeaderBar = () => {
+  const router = useRouter();
+  console.log("path is " + router.asPath);
+
   return (
     <div style={{ paddingBottom: "3rem" }}>
       <HeaderContainer
@@ -38,9 +42,17 @@ const HeaderBar = () => {
                   </Column>
                   <Column sm={12} md={5} lg={9} style={{ paddingLeft: 0 }}>
                     <HeaderGlobalBar aria-label="IBM [Platform]">
-                      {Object.keys(config["timeframes"]).map((hours) => (
+                      {Object.keys(config["timeframes"]).map((hours, index) => (
                         <Link key={hours} href={"/" + hours} passHref>
-                          <Button style={{ paddingRight: "1.5rem" }}>
+                          <Button
+                            kind={
+                              router.asPath.slice(1) == hours ||
+                              (router.asPath.slice(1) == "" && index == 0)
+                                ? "tertiary"
+                                : "primary"
+                            }
+                            style={{ paddingRight: "1.5rem" }}
+                          >
                             {config["timeframes"][hours]}
                           </Button>
                         </Link>

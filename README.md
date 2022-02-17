@@ -35,7 +35,7 @@ Spin Finance Dashboard exposes API endpoints that anyone can use to obtain key m
 - Additionally, you may specify a `groupBy` parameter (e.g. `groupBy=hour` or `groupBy=day`).
 - For `/volume` endpoint, you can specify an optional `marketId` parameter which will filter for a specifc market (e.g. `marketId=1` filters for NEAR/USDC only)
 - For `/volume` endpoint, omitting `marketId` returns data categorized for each market pair. Alternatively, `marketId=all` returns data summed and aggregated over all markets
-  -The `/api/orders` is a data-heavy endpoint and is available for local development only
+- The `/api/orders` is a data-heavy endpoint and is available for local development only
 
 ## Project Sustainability
 

@@ -27,5 +27,19 @@ body {
   fill: white;
 }
 
+.bx--btn--tertiary {
+  color: black;
+  background-color: white;
+  border-color: white;
+}
+.bx--btn--tertiary:hover {
+  color: black;
+  background-color: white;
+}
+.bx--btn--tertiary:active {
+  color: black;
+  background-color: white;
+}
+
 $carbon--theme: $carbon--theme--g100;
 @include carbon--theme();
