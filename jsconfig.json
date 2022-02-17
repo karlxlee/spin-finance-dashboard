@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@/dashboard/*": ["dashboard/*"],
       "@/components/*": ["components/*"],
       "@/utils/*": ["utils/*"],
       "@/api/*": ["pages/api/*"]
