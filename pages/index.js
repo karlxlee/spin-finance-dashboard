@@ -43,6 +43,9 @@ export default function Home(props) {
                 }))}
                 options={{
                   title: "Volume of orders placed (in USDC)",
+                  data: {
+                    loading: props.volume ? false : true,
+                  },
                   axes: {
                     left: {
                       stacked: true,
@@ -69,6 +72,9 @@ export default function Home(props) {
                 }))}
                 options={{
                   title: "Volume of orders placed (in USDC) by market",
+                  data: {
+                    loading: props.volumeTotal ? false : true,
+                  },
                   resizable: true,
                   donut: {
                     center: {
@@ -95,6 +101,9 @@ export default function Home(props) {
                 ]}
                 options={{
                   title: "Total number of users",
+                  data: {
+                    loading: props.userCountTotal[0].user_count ? false : true,
+                  },
                   resizable: true,
                   donut: {
                     center: {
@@ -120,6 +129,9 @@ export default function Home(props) {
                 }))}
                 options={{
                   title: "Number of orders",
+                  data: {
+                    loading: props.orderCount ? false : true,
+                  },
                   axes: {
                     left: {
                       mapsTo: "value",
@@ -145,6 +157,9 @@ export default function Home(props) {
                 }))}
                 options={{
                   title: "Number of users",
+                  data: {
+                    loading: props.userCount ? false : true,
+                  },
                   axes: {
                     left: {
                       mapsTo: "value",
@@ -181,6 +196,9 @@ export default function Home(props) {
                   title:
                     config["markets"][currentItem.id] +
                     ": Volume of orders placed (in USDC)",
+                  data: {
+                    loading: props.eachMarketVolume ? false : true,
+                  },
                   axes: {
                     left: {
                       stacked: true,
