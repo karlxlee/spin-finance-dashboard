@@ -41,7 +41,6 @@ export async function orderCount({
         },
       }
     );
-    console.log(receipts);
     return receipts;
   } catch (error) {
     console.log(error);

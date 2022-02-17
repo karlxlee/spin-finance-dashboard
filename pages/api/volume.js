@@ -100,8 +100,6 @@ export async function volume({
         spinAccount: config["account"],
       },
     });
-    marketId && console.log(receipts);
-
     return receipts;
   } catch (error) {
     console.log(error);

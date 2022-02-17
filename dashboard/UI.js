@@ -102,6 +102,11 @@ export default function UI(props) {
                 data={props.orderCount}
                 options={{
                   title: "Number of orders",
+                  zoomBar: {
+                    top: {
+                      enabled: true,
+                    },
+                  },
                   data: {
                     loading: props ? false : true,
                   },
@@ -115,7 +120,7 @@ export default function UI(props) {
                       scaleType: "time",
                     },
                   },
-                  height: "400px",
+                  height: "440px",
                 }}
               />
             </GraphTile>
@@ -126,6 +131,11 @@ export default function UI(props) {
                 data={props.userCount}
                 options={{
                   title: "Number of users",
+                  zoomBar: {
+                    top: {
+                      enabled: true,
+                    },
+                  },
                   data: {
                     loading: props ? false : true,
                   },
@@ -136,9 +146,13 @@ export default function UI(props) {
                     bottom: {
                       mapsTo: "date",
                       scaleType: "time",
+                      domain: [
+                        props.userCount[0]["date"],
+                        props.userCount[props.userCount.length - 1]["date"],
+                      ],
                     },
                   },
-                  height: "25rem",
+                  height: "440px",
                 }}
               />
             </GraphTile>

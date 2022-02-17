@@ -2,6 +2,8 @@
 
 ### Live Demo: https://spin-finance-dashboard.vercel.app/
 
+Explore Spin Finance spot metrics on NEAR
+
 Spin Finance's spot markets are live on NEAR testnet, but there are no dedicated analytics to track its usage. Traders, investors and other stakeholders want to monitor Spin's performance using charts and metrics. Spin Finance Dashboard draws back the curtain and brings those metrics to the forefront.
 
 ## Technologies
@@ -11,6 +13,7 @@ Spin Finance Dashboard uses:
 - Instant server-rendered pages + incremental static regeneration using the lastest data via [Next.js](https://nextjs.org/)
 - Latest blockchain data from the [NEAR indexer](https://github.com/near/near-indexer-for-explorer/)
 - Industry-standard charts and UI via [IBM's Carbon Design Framework](https://www.carbondesignsystem.com/), by using the [Carbon Components](https://github.com/carbon-design-system/carbon/tree/main/packages/react) & [Carbon Charts](https://github.com/carbon-design-system/carbon-charts/tree/master/packages/react) React packages
+- A responsive, custom-built UI on both mobile and desktop
 
 ## Metrics
 
@@ -61,8 +64,8 @@ As Spin Finance adds new markets and deploys to mainnet, Spin Finance Dashboard 
 #### Adding a new metric
 
 - Create a new endpoint file in `/pages/api` for the metric. Fetch the data in this file.
-- Call the API function and process the data in `/dashboard/Data`
-- Use the data in a graph in `dashboard/UI`
+- Call the API function and process the data in `/dashboard/Data.js`
+- Use the data in a graph in `dashboard/UI.js`
 
 ## Local development
 
