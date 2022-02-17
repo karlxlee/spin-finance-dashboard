@@ -23,6 +23,9 @@ export default function UI(props) {
                 data={props.volume}
                 options={{
                   title: "Volume of orders placed (in USDC)",
+                  data: {
+                    loading: props ? false : true,
+                  },
                   axes: {
                     left: {
                       stacked: true,
@@ -46,6 +49,9 @@ export default function UI(props) {
                 data={props.volumeTotal}
                 options={{
                   title: "Volume of orders placed (in USDC) by market",
+                  data: {
+                    loading: props ? false : true,
+                  },
                   resizable: true,
                   donut: {
                     center: {
@@ -72,6 +78,9 @@ export default function UI(props) {
                 ]}
                 options={{
                   title: "Total number of users",
+                  data: {
+                    loading: props ? false : true,
+                  },
                   resizable: true,
                   donut: {
                     center: {
@@ -93,6 +102,9 @@ export default function UI(props) {
                 data={props.orderCount}
                 options={{
                   title: "Number of orders",
+                  data: {
+                    loading: props ? false : true,
+                  },
                   axes: {
                     left: {
                       mapsTo: "value",
@@ -114,6 +126,9 @@ export default function UI(props) {
                 data={props.userCount}
                 options={{
                   title: "Number of users",
+                  data: {
+                    loading: props ? false : true,
+                  },
                   axes: {
                     left: {
                       mapsTo: "value",
@@ -146,7 +161,9 @@ export default function UI(props) {
                   title:
                     config["markets"][currentItem.id] +
                     ": Volume of orders placed (in USDC)",
-
+                  data: {
+                    loading: props ? false : true,
+                  },
                   axes: {
                     left: {
                       stacked: true,
