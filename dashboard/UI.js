@@ -131,11 +131,11 @@ export default function UI(props) {
                 data={props.userCount}
                 options={{
                   title: "Number of users",
-                  zoomBar: {
-                    top: {
-                      enabled: true,
-                    },
-                  },
+                  // zoomBar: {
+                  //   top: {
+                  //     enabled: true,
+                  //   },
+                  // },
                   data: {
                     loading: props ? false : true,
                   },
@@ -163,6 +163,7 @@ export default function UI(props) {
                 style={{ marginBottom: "2rem" }}
                 id="default"
                 titleText="Volume by market"
+                label="Volume by market"
                 selectedItem={currentItem}
                 onChange={({ selectedItem }) => setCurrentItem(selectedItem)}
                 items={props.marketItems}
