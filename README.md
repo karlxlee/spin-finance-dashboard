@@ -4,6 +4,13 @@
 
 Explore Spin Finance spot metrics on NEAR
 
+
+
+https://user-images.githubusercontent.com/30199031/155182784-61768854-abec-4d73-8611-27d6c0513c33.mp4
+
+
+A submission for the NEAR Metabuild hackathon
+
 Spin Finance's spot markets are live on NEAR testnet, but there are no dedicated analytics to track its usage. Traders, investors and other stakeholders want to monitor Spin's performance using charts and metrics. Spin Finance Dashboard draws back the curtain and brings those metrics to the forefront.
 
 ## Technologies
@@ -14,6 +21,8 @@ Spin Finance Dashboard uses:
 - Latest blockchain data from the [NEAR indexer](https://github.com/near/near-indexer-for-explorer/)
 - Industry-standard charts and UI via [IBM's Carbon Design Framework](https://www.carbondesignsystem.com/), by using the [Carbon Components](https://github.com/carbon-design-system/carbon/tree/main/packages/react) & [Carbon Charts](https://github.com/carbon-design-system/carbon-charts/tree/master/packages/react) React packages
 - A responsive, custom-built UI on both mobile and desktop
+
+<img width="1063" alt="image" src="https://user-images.githubusercontent.com/30199031/155182994-afdf4895-e4a4-44a1-87fc-cc5b65358aea.png">
 
 ## Metrics
 
