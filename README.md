@@ -93,3 +93,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 The easiest way to deploy Spin Finance Dashboard is via Vercel:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fkarlxlee%2Fspin-finance-dashboard)
+
+## Explore other projects:
+- https://devpost.com/karlxlee
+- https://gitcoin.co/karlxlee
+
+Previous hackathon wins:
+- https://github.com/karlxlee/lunatic-score-calculator
+- https://github.com/karlxlee/make-crypto-mobile-hackathon/tree/project/optics_dashboard
